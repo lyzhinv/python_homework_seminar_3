@@ -10,24 +10,34 @@
 # 1 2 1 2 2
 # Вывод: 2
 
-import random
+while True:
+    try:
 
-n = int(input('Введите значение N: '))
-x = int(input('Введите значение X: '))
+        import random
 
-m = []
-for num in range(n):
-    random_number = round(random.uniform(1, n/2), 0)
-    m.append(int(random_number))
+        n = int(input('Введите значение N: '))
+        x = int(input('Введите значение X: '))
 
-def CountNumbers (n):
-    i = count = 0
-    while i < n:
-        if m[i] == x:
-            count += 1
-            i += 1
-        else:
-            i += 1
-    return count
+        if n <= 0 or x <= 0:
+            print('Ошибка! Значения "N" и "X" должны быть целыми и положительными ')
+            break
+            
+        m = []
+        for num in range(n):
+            random_number = round(random.uniform(1, n/2), 0)
+            m.append(int(random_number))
 
-print(f'В массиве {m}, число {x} повторяется - {CountNumbers(n)} раз(а)')
+        def CountNumbers (n):
+            i = count = 0
+            while i < n:
+                if m[i] == x:
+                    count += 1
+                    i += 1
+                else:
+                    i += 1
+            return count
+
+        print(f'В массиве {m}, число "{x}" повторяется - {CountNumbers(n)} раз(а)')
+        break
+    except:
+        print('Ошибка! Необходимо ввести целое положительное число')
